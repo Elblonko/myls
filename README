@@ -1,0 +1,171 @@
+/*
+ * Filename: README
+ * Author: Matthew Schwegler
+ * Userid: cs30xfw
+ * Date: Jun 04, 2013
+ */
+
+Included Files:
+
+        C Files:
+
+        int buildFileInfoTable (const char *filename,
+                      struct fileInfo ** const tablePtr);
+
+        void displayFileInfo ( struct fileInfo * const table, const int entries 
+                      const int displayMode );
+
+        int mtimeSortAscending ( const void *p1, const void *p2 );
+
+        int nameSortDecending ( const void *p1, const void *p2 );
+
+        void displayPermissions ( const mode_t mode );
+
+        void displayOwnerName ( const uid_t uid );
+
+        Aseembly Files:
+        
+        int mtimeSortDecending ( const void *p1, const void *p2);
+
+        int nameSortAscending ( const void *p1, const void *p2);
+
+        void displayGroupName ( const gid_t gid );
+
+        Header and Compilation Files:
+        
+        myls.h, Makefile
+
+Description:
+        The myls program is a terminal window tool designed to mimic
+        the "ls" function already existing in the linux terminal environment
+        myls is similair to ls but less robust only allowing the user to 
+        sort by time modified and name, display file info and hidden files.
+
+How to Compile:
+        To compile myls ensure you have all the above files in a directory.
+        Typing "make" into the terminal window will then compile all the
+        files required for myls to function.
+
+How to Run:
+        The program myls is run through an executable file followed by several
+        flag commands or specific file listings
+        Default Run: simply type ./myls into termal window to list difault
+        displayed files
+        Hidden Files: Type ./myls -a to list all files in a directory including
+        hidden files
+        File Information: Type ./myls -l to list all files in a directory with
+        associated information like owner and last modified date
+        Reverse display order: Type ./myls -r to reverse the display order
+        which default would be decending alphabetical
+        Sort by last modified date: Type ./myls -t to sort the files by there
+        last modified date
+        Multiple flags: all the above flags can be used together to get various
+        display outputs
+
+
+        Example output:
+        ./myls
+[cs30xfw@ieng9]:pa4:557$ ./myls
+.:
+Makefile
+buildFileInfoTable.c
+buildFileInfoTable.ln
+buildFileInfoTable.o
+displayFileInfo.c
+displayFileInfo.ln
+displayFileInfo.o
+displayGroupName.o
+displayGroupName.s
+displayOwnerName.c
+displayOwnerName.ln
+displayOwnerName.o
+displayPermissions.c
+displayPermissions.ln
+displayPermissions.o
+mtimeSortAscending.c
+mtimeSortAscending.ln
+mtimeSortAscending.o
+mtimeSortDecending.o
+mtimeSortDecending.s
+myls
+myls.c
+myls.h
+myls.ln
+myls.o
+nameSortAscending.o
+nameSortAscending.s
+nameSortDecending.c
+nameSortDecending.ln
+nameSortDecending.o
+pa4test
+
+        Example output all flags:
+        ./myls -alrt
+        
+[cs30xfw@ieng9]:pa4:558$ ./myls -alrt
+.:
+-rw-r-----   1 cs30xfw  cs30x       1220 Jun  1 17:20 nameSortDecending.c
+-rw-r-----   1 cs30xfw  cs30x       1653 Jun  1 19:48 Makefile
+-rw-r-----   1 cs30xfw  cs30x      12288 Jun  3 13:48 .nameSortDecending.c.swp
+-rwxr-x---   1 cs30xfw  cs30x      10008 Jun  3 18:04 pa4test
+-rw-r-----   1 cs30xfw  cs30x       1481 Jun  3 19:04 mtimeSortAscending.c
+-rw-r-----   1 cs30xfw  cs30x      12288 Jun  3 19:04 .mtimeSortAscending.c.swp
+-rw-r-----   1 cs30xfw  cs30x       1132 Jun  3 19:32 displayOwnerName.c
+-rw-r-----   1 cs30xfw  cs30x      12288 Jun  3 19:32 .displayOwnerName.c.swp
+-rw-r-----   1 cs30xfw  cs30x       1182 Jun  3 19:44 myls.h
+-rw-r-----   1 cs30xfw  cs30x       3099 Jun  3 19:49 myls.c
+-rw-r-----   1 cs30xfw  cs30x      12288 Jun  3 19:49 .myls.c.swp
+-rw-r-----   1 cs30xfw  cs30x       4062 Jun  3 20:41 buildFileInfoTable.c
+-rw-r-----   1 cs30xfw  cs30x       2166 Jun  3 21:12 displayPermissions.c
+-rw-r-----   1 cs30xfw  cs30x      12288 Jun  3 21:12 .displayPermissions.c.swp
+-rw-r-----   1 cs30xfw  cs30x      17232 Jun  3 21:29 displayFileInfo.c
+-rw-r-----   1 cs30xfw  cs30x      45056 Jun  3 21:29 .displayFileInfo.c.swp
+-rw-r-----   1 cs30xfw  cs30x       1437 Jun  4 14:33 mtimeSortDecending.s
+-rw-r-----   1 cs30xfw  cs30x       1318 Jun  4 14:33 nameSortAscending.s
+-rw-r-----   1 cs30xfw  cs30x       1661 Jun  4 14:34 displayGroupName.s
+drwxrwx---  13 cs30xfw  cs30x       4096 Jun  4 14:54 ..
+-rw-r-----   1 cs30xfw  cs30x      53686 Jun  4 15:03 buildFileInfoTable.ln
+-rw-r-----   1 cs30xfw  cs30x      47903 Jun  4 15:03 myls.ln
+-rw-r-----   1 cs30xfw  cs30x       5936 Jun  4 15:03 myls.o
+-rw-r-----   1 cs30xfw  cs30x      16440 Jun  4 15:03 displayFileInfo.o
+-rw-r-----   1 cs30xfw  cs30x       6744 Jun  4 15:03 buildFileInfoTable.o
+-rw-r-----   1 cs30xfw  cs30x      57359 Jun  4 15:03 displayFileInfo.ln
+-rw-r-----   1 cs30xfw  cs30x      22659 Jun  4 15:03 mtimeSortAscending.ln
+-rw-r-----   1 cs30xfw  cs30x       3076 Jun  4 15:03 mtimeSortAscending.o
+-rw-r-----   1 cs30xfw  cs30x      28033 Jun  4 15:03 nameSortDecending.ln
+-rw-r-----   1 cs30xfw  cs30x      23660 Jun  4 15:03 displayPermissions.ln
+-rw-r-----   1 cs30xfw  cs30x       3164 Jun  4 15:03 nameSortDecending.o
+-rw-r-----   1 cs30xfw  cs30x       3604 Jun  4 15:04 displayPermissions.o
+-rw-r-----   1 cs30xfw  cs30x      24308 Jun  4 15:04 displayOwnerName.ln
+-rw-r-----   1 cs30xfw  cs30x        752 Jun  4 15:04 mtimeSortDecending.o
+-rw-r-----   1 cs30xfw  cs30x        652 Jun  4 15:04 nameSortAscending.o
+-rw-r-----   1 cs30xfw  cs30x        948 Jun  4 15:04 displayGroupName.o
+-rw-r-----   1 cs30xfw  cs30x       2728 Jun  4 15:04 displayOwnerName.o
+-rwxr-x---   1 cs30xfw  cs30x      33872 Jun  4 15:04 myls
+drwxr-x---   2 cs30xfw  cs30x       4096 Jun  4 15:04 .
+-rw-------   1 cs30xfw  cs30x      12288 Jun  4 15:06 .README.swp
+
+        Example of bad output:
+        ./myls -g
+[cs30xfw@ieng9]:pa4:559$ ./myls -g
+./myls: illegal option -- g
+myls: illegal option -- g
+Usage: myls [-alrt] [file ...]
+
+Testing:
+        A great deal of testing was performed to ensure the quality of myls
+
+        Comparison Testing:
+                All output possibilites were compared with both the outputs
+                from the linux terminal ls function as well as the pa4test
+                function provided to us by the instructor.
+                These tests were performed using both the terminal output as
+                well as diffing the various file outputs for consistency.
+
+
+        
+
+        
+
+
+
